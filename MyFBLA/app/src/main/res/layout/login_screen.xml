@@ -30,6 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="The Best Way to Learn About FBLA!"
+        android:textColor="#fff"
         android:textSize="22sp"
         android:typeface="sans" />
 
@@ -48,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:hint="Email"
-            android:maxLines="1"
+            android:inputType="textEmailAddress"
             android:textColor="#fff" />
     </android.support.design.widget.TextInputLayout>
 
@@ -82,16 +83,4 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
         android:text="@string/action_sign_in_short" />
-
-    <TextView
-        android:id="@+id/createAccountText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/email_sign_in_button"
-        android:layout_marginTop="25dp"
-        android:gravity="center_horizontal"
-        android:text="No Account? Click Here"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 </RelativeLayout>

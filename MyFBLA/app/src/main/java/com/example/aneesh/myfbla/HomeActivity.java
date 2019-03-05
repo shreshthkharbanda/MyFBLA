@@ -52,9 +52,13 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         blogButton.setOnClickListener(view -> {
-            intent = new Intent(HomeActivity.this, ForumActivity.class);
-            intent.putExtra("name", name);
-            startActivity(intent);
+            if (name.equals("Guestcode10230213284")) {
+                Toast.makeText(this, "Please login/sign up to access this feature.", Toast.LENGTH_SHORT).show();
+            } else {
+                intent = new Intent(HomeActivity.this, ForumActivity.class);
+                intent.putExtra("name", name);
+                startActivity(intent);
+            }
         });
 
         learnButton.setOnClickListener(view -> {

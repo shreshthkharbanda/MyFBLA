@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -36,6 +39,8 @@ public class LearnByCategory extends AppCompatActivity {
         setContentView(R.layout.activity_learn_by_category);
         Intent intent = getIntent();
 
+        ListView questions = findViewById(R.id.questionsList);
+
         try {
             category = intent.getStringExtra("category");
         } catch (Exception e) {
@@ -43,6 +48,17 @@ public class LearnByCategory extends AppCompatActivity {
             category = "A";
         }
         getQuestions(category);
+
+        questions.setOnItemClickListener((adapterView, view, i, l) -> {
+            String question = questions.getItemAtPosition(i).toString();
+            question = question.substring(question.indexOf("question="), question.indexOf(", questionCategory")).replace("question=", "");
+
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Go checkout \"" + question + "\" on MyFBLA!");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+        });
 
     }
 
@@ -119,12 +135,7 @@ public class LearnByCategory extends AppCompatActivity {
 
                 } catch (IOException ioe) {
                     ioe.printStackTrace();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "Input-Output Exception", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    runOnUiThread(() -> Toast.makeText(getApplicationContext(), "Input-Output Exception", Toast.LENGTH_LONG).show());
 
                 } finally {
                     if (inputStream != null) try {
