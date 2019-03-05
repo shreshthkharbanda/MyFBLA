@@ -1,5 +1,5 @@
 # MyFBLA
-You will receive a Github link to our Mobile App Project. Download the project from Github, which will download as a zip-file. Extract the files from the zip-file. Open the folder MyFBLA folder, [insert rest of instructions to download apk].
+You will receive a Github link to our Mobile App Project. Download the project from Github, which will download as a zip-file. Extract the files from the zip-file. Open the folder MyFBLA folder, in Android Studio. Once opened, click on the run option in the navigation bar at the top. Then, create a new virtual device. Here, just select a phone and click next/finish till it is done. Finally, press ok when the dialog box appears asking which emulator to choose.
 
 One of our development goals for MyFBLA was to ensure that its navigation was easy to use even for a first time user. All navigation processes have been thoroughly tested by our team to ensure that there are no errors present. Members have the option to either create an account, log in to an existing account, or continue as guest. If the member has signed into an account, then they have access to all features of MyFBLA. If the member is proceeding as a guest, they will have limited access to our features. 
 
